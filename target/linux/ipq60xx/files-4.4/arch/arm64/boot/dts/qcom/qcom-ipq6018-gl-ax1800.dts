@@ -1,0 +1,63 @@
+// SPDX-License-Identifier: GPL-2.0-or-later OR MIT
+// Copyright (c) 2021 AmadeusGhost <amadeus@jmu.edu.cn>
+
+#include "qcom-ipq6018-glinet.dtsi"
+
+/ {
+	model = "GL.iNet GL-AX1800";
+	compatible = "glinet,gl-ax1800", "qcom,ipq6018";
+
+	aliases {
+		ethernet3 = "/soc/dp4";
+		ethernet4 = "/soc/dp5";
+	};
+
+	soc {
+		ess-switch@3a000000 {
+			qcom,port_phyinfo {
+				port@2 {
+					port_id = <4>;
+					phy_address = <3>;
+				};
+				port@3 {
+					port_id = <5>;
+					phy_address = <4>;
+				};
+			};
+		};
+
+		dp4 {
+			device_type = "network";
+			compatible = "qcom,nss-dp";
+			qcom,id = <4>;
+			reg = <0x3a001600 0x200>;
+			qcom,mactype = <0>;
+			local-mac-address = [000000000000];
+			qcom,link-poll = <1>;
+			qcom,phy-mdio-addr = <3>;
+			phy-mode = "sgmii";
+		};
+
+		dp5 {
+			device_type = "network";
+			compatible = "qcom,nss-dp";
+			qcom,id = <5>;
+			reg = <0x3a001800 0x200>;
+			qcom,mactype = <0>;
+			local-mac-address = [000000000000];
+			qcom,link-poll = <1>;
+			qcom,phy-mdio-addr = <4>;
+			phy-mode = "sgmii";
+		};
+	};
+};
+
+&mdio {
+	phy3: ethernet-phy@3 {
+		reg = <3>;
+	};
+
+	phy4: ethernet-phy@4 {
+		reg = <4>;
+	};
+};

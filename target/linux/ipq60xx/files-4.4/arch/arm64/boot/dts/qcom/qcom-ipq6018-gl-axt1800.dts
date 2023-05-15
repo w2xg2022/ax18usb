@@ -1,0 +1,85 @@
+// SPDX-License-Identifier: GPL-2.0-or-later OR MIT
+// Copyright (c) 2022 AmadeusGhost <amadeus@jmu.edu.cn>
+
+#include "qcom-ipq6018-glinet.dtsi"
+#include <dt-bindings/thermal/thermal.h>
+
+/ {
+	model = "GL.iNet GL-AXT1800";
+	compatible = "glinet,gl-axt1800", "qcom,ipq6018";
+
+	aliases {
+		sdhc2 = &sdhc_2;
+	};
+
+	soc {
+		ess-switch@3a000000 {
+			switch_lan_bmp = <0xc>;
+		};
+
+		pwm: pwm {
+			#pwm-cells = <2>;
+			pinctrl-0 = <&pwm_pins>;
+			pinctrl-names = "default";
+			used-pwm-indices = <0>, <1>, <0>, <0>;
+			status = "ok";
+		};
+
+		fan: pwm-fan {
+			compatible = "pwm-fan";
+			pwms = <&pwm 1 255>;
+			pinctrl-0 = <&fan_pins>;
+			pinctrl-names = "default";
+			cooling-min-state = <0>;
+			cooling-max-state = <3>;
+			#cooling-cells = <2>;
+			cooling-levels = <0 150 200 255>;
+		};
+	};
+};
+
+&tlmm {
+	sd_pins: sd_pins {
+		sd {
+			pins = "gpio62";
+			function = "sd_card";
+			bias-pull-up;
+		};
+		ldo {
+			pins = "gpio66";
+			function = "gpio";
+			bias-pull-up;
+		};
+	};
+
+	pwm_pins: pwm_pinmux {
+		pwm {
+			pins = "gpio30";
+			function = "pwm13";
+			drive-strength = <8>;
+		};
+	};
+
+	fan_pins: fan_pins {
+		pwr {
+			pins = "gpio29";
+			function = "gpio";
+			bias-pull-up;
+			output-high;
+		};
+		speed {
+			pins = "gpio31";
+			function = "gpio";
+			drive-strength = <8>;
+			bias-pull-down;
+		};
+	};
+};
+
+&sdhc_2 {
+	pinctrl-0 = <&sd_pins>;
+	pinctrl-names = "default";
+	cd-gpios = <&tlmm 62 1>;
+	sd-ldo-gpios = <&tlmm 66 1>;
+	status = "ok";
+};
