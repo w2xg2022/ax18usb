@@ -57,7 +57,6 @@
 	make menuconfig
 
 	#下载dl库解压缩到dl目录，比较快；保守起见都只用单线程，-j1可用-j$(nproc)替换为多线程
-	
 	make download -j1 V=s
 
 	make -j1 V=s   
