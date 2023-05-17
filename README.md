@@ -9,6 +9,7 @@
 3. 大部分插件可安装和使用。【kmod类、lib类插件容易失败，信息为Cannot satisfy the following dependencies for luci-app-xxx、But that file is already provided by package libxxx，部分可通过--nodeps参数完成安装】
 
 
+
 ## 代码来源和主要调整
 
 主要代码来自coolsnowwolf/lean、kiddin9等2位大佬，特此感谢。仓库地址如下：
@@ -25,6 +26,7 @@
 4. 更新dnsproxy、hostapd版本，解决编译报错问题。
 
 
+
 ## 编译环境和命令
 
 1. 在PC虚拟机使用Ubuntu x64 22.04.2、Github Actions使用Ubuntu 22.04成功编译过。
@@ -32,20 +34,19 @@
 2. 安装编译依赖
 
 	```bash
-
 	sudo apt-get update
 	sudo apt-get upgrade -y
 	sudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential bzip2 ccache cmake cpio curl device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libreadline-dev libssl-dev libtool lrzsz mkisofs msmtp nano ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 python3-pyelftools libpython3-dev qemu-utils rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
 
 	```
 
-3. 下载源代码，更新和安装feeds、选择配置、下载dl库，开始编译
+3. 下载源代码，更新和安装feeds、选择配置、下载<a href ="https://pan.baidu.com/s/1JkQlDtkj0UPLUFpu73A64g?pwd=wb85">dl库</a>，开始编译
 
 	```bash
 	git clone https://github.com/w2xg2022/ax18usb
 	cd ax18usb
 	
-	#代码在Win10里整理的，权限都乱了，直接强制提权
+	代码在Win10里整理的，权限都乱了，直接强制提权
 	chmod -R 775 *
 
 	./scripts/feeds update -a
@@ -55,7 +56,7 @@
 	cp default.config .config
 	make menuconfig
 
-	#下载<a href ="https://pan.baidu.com/s/1JkQlDtkj0UPLUFpu73A64g?pwd=wb85">ax18usb_dl.rar</a>解压缩到dl 目录，比较快；保守起见都只用单线程，-j1可用-j$(nproc)替换为多线程
+	#下载dl库解压缩到dl目录，比较快；保守起见都只用单线程，-j1可用-j$(nproc)替换为多线程
 	
 	make download -j1 V=s
 
@@ -63,15 +64,17 @@
 	```
 
 
+
 ## 云编译和固件下载
 
-1.固件的默认IP、账号密码、插件清单、更换软件源等信息，请参考https://github.com/w2xg2022/actions4ax18usb。
+1.固件的默认IP、账号密码、插件清单、更换软件源等信息，请参考<a href="https://github.com/w2xg2022/actions4ax18usb">这里</a>。
 
 2.固件下载页面：https://github.com/w2xg2022/actions4ax18usb/releases/tag/2023.05.16-1844，或直接<a href="https://github.com/w2xg2022/actions4ax18usb/releases/download/2023.05.16-1844/openwrt-ipq60xx-generic-cmiot_ax18-squashfs-nand-factory.ubi">下载</a>。
 	
+
 
 ## 打赏
 
 如果你觉得这个仓库、说明文档和固件等对你有帮助，能够激发和目AX18/兆能M2的潜能，欢迎通过微信打赏，谢谢。
 
- ![star](pic_star.png)
+<img src="pic_star.jpg" width=300  />
