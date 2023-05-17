@@ -52,7 +52,7 @@
 	./scripts/feeds update -a
 	./scripts/feeds install -a
 
-	#第一次编译最好直接用提供的default.config
+	#第一次编译最好直接用default.config的配置
 	cp default.config .config
 	make menuconfig
 
@@ -69,7 +69,7 @@
 
 1.固件的默认IP、账号密码、插件清单、更换软件源等信息，请参考<a href="https://github.com/w2xg2022/actions4ax18usb">这里</a>。
 
-2.固件下载页面：https://github.com/w2xg2022/actions4ax18usb/releases/tag/2023.05.16-1844，或直接<a href="https://github.com/w2xg2022/actions4ax18usb/releases/download/2023.05.16-1844/openwrt-ipq60xx-generic-cmiot_ax18-squashfs-nand-factory.ubi">下载</a>。
+2.访问固件<a href="https://github.com/w2xg2022/actions4ax18usb/releases/tag/2023.05.16-1844">下载页面</a>，或直接<a href="https://github.com/w2xg2022/actions4ax18usb/releases/download/2023.05.16-1844/openwrt-ipq60xx-generic-cmiot_ax18-squashfs-nand-factory.ubi">下载固件</a>。
 	
 
 
