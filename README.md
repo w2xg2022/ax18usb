@@ -46,7 +46,7 @@
 	git clone https://github.com/w2xg2022/ax18usb
 	cd ax18usb
 	
-	代码在Win10里整理的，权限都乱了，直接强制提权
+	#代码在Win10里整理的，权限都乱了，直接强制提权
 	chmod -R 775 *
 
 	./scripts/feeds update -a
